@@ -41,7 +41,7 @@ app.frame('/', (c) => {
                 <Box flexDirection="row" justifyContent="center">
                     <Text color="white" align="center" size="14">created by</Text>
                     <Spacer size="10" />
-                    <Text color="yellow" decoration="underline" align="center" size="14"> @0x94t3z</Text>
+                    <Text color="grey" decoration="underline" align="center" size="14"> @0x94t3z</Text>
                 </Box>
             </VStack>
         </Box>
@@ -57,11 +57,6 @@ app.frame('/', (c) => {
 app.castAction(
   '/higher-tip',
   (c) => {
-    console.log(
-      `Cast Action to ${JSON.stringify(c.actionData.castId)} from ${
-        c.actionData.fid
-      }`,
-    )
     // Stringify the entire castId object
     const castId = JSON.stringify(c.actionData.castId);
 
@@ -72,7 +67,7 @@ app.castAction(
 
     return c.frame({ path: `/higher-tip-frame/${castFid}/from/${fromFid}`})
   }, 
-  { name: "Higher tipping", icon: "zap" }
+  { name: "Higher Tipping ↑", icon: "zap" }
 )
 
 app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
@@ -101,7 +96,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
                   <Box flexDirection="row" justifyContent="center">
                       <Text color="white" align="center" size="14">created by</Text>
                       <Spacer size="10" />
-                      <Text color="yellow" decoration="underline" align="center" size="14"> @0x94t3z</Text>
+                      <Text color="grey" decoration="underline" align="center" size="14"> @0x94t3z</Text>
                   </Box>
               </VStack>
           </Box>
@@ -148,7 +143,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
               <Box flexDirection="row" justifyContent="center">
                   <Text color="white" align="center" size="14">created by</Text>
                   <Spacer size="10" />
-                  <Text color="yellow" decoration="underline" align="center" size="14"> @0x94t3z</Text>
+                  <Text color="grey" decoration="underline" align="center" size="14"> @0x94t3z</Text>
                 </Box>
           </VStack>
         </Box>
@@ -181,7 +176,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
                 <Box flexDirection="row" justifyContent="center">
                     <Text color="white" align="center" size="14">created by</Text>
                     <Spacer size="10" />
-                    <Text color="yellow" decoration="underline" align="center" size="14"> @0x94t3z</Text>
+                    <Text color="grey" decoration="underline" align="center" size="14"> @0x94t3z</Text>
                 </Box>
             </VStack>
         </Box>
