@@ -31,13 +31,17 @@ app.castAction(
       `Cast Action to ${JSON.stringify(c.actionData.castId)} from ${
         c.actionData.fid
       }`,
-    ) 
-    return c.frame({ path: '/higher-tip-frame' })
+    )
+    const message = c.actionData.castId
+    return c.frame({ path: `/higher-tip-frame/${message}`})
   }, 
   { name: "Higher tipping", icon: "zap" }
 )
 
-app.frame('/higher-tip-frame', (c) => {
+app.frame('/higher-tip-frame/:message', (c) => {
+  const message = c.req.param();
+
+  console.log(`Received message: ${message}`)
   return c.res({
     image: (
       <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
