@@ -5,8 +5,8 @@ import { abi } from "../lib/higherAbi.js";
 import dotenv from 'dotenv';
 
 // Uncomment this packages to tested on local server
-import { devtools } from 'frog/dev';
-import { serveStatic } from 'frog/serve-static';
+// import { devtools } from 'frog/dev';
+// import { serveStatic } from 'frog/serve-static';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -76,7 +76,7 @@ app.castAction(
 )
 
 app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
-  const {castFid, fromFid} = c.req.param();
+  const { castFid, fromFid } = c.req.param();
 
   if (fromFid === castFid) {
     return c.res({
@@ -128,7 +128,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
     const eth_address = userData.verified_addresses.eth_addresses.toString().toLowerCase().split(',')[0];
 
     return c.res({
-      action: '/tx-status',
+      action: `/tx-status/${username}`,
       image: (
         <Box
           grow
@@ -205,7 +205,7 @@ app.transaction('/transfer/:eth_address', async (c, next) => {
   });
 },
 async (c) => { 
-    const {eth_address} = c.req.param();
+    const { eth_address } = c.req.param();
 
     const contractAddress = process.env.HIGHER_SMART_CONTRACT_ADDRESS;
     // Send transaction response. 
@@ -219,8 +219,47 @@ async (c) => {
   }
 )
 
+
+app.frame('/tx-status/:username', (c) => {
+  const { transactionId } = c
+  const { username } = c.req.param();
+  
+  return c.res({
+    action: '/tx-status',
+    image: (
+      <Box
+        grow
+        alignVertical="center"
+        backgroundColor="bg"
+        padding="48"
+        textAlign="center"
+        height="100%"
+      >
+        <VStack gap="4">
+          <Heading color="white" weight="900" align="center" size="32">
+          ↑ Higher Tipping ↑
+          </Heading>
+          <Spacer size="16" />
+          <Text align="center" color="grey" size="18">
+            Successfully tipped @{username}!
+          </Text>
+          <Spacer size="22" />
+            <Box flexDirection="row" justifyContent="center">
+                <Text color="white" align="center" size="14">created by</Text>
+                <Spacer size="10" />
+                <Text color="grey" decoration="underline" align="center" size="14"> @0x94t3z</Text>
+              </Box>
+        </VStack>
+      </Box>
+    ),
+    intents: [
+      <Button.Link href={`https://basescan.org/tx/${transactionId}`}>View on Basescan</Button.Link>,
+    ],
+  });
+})
+
 // Uncomment this line code to tested on local server
-devtools(app, { serveStatic });
+// devtools(app, { serveStatic });
 
 export const GET = handle(app)
 export const POST = handle(app)
