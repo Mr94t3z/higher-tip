@@ -41,7 +41,7 @@ app.frame('/', (c) => {
                 <Box flexDirection="row" justifyContent="center">
                     <Text color="white" align="center" size="14">created by</Text>
                     <Spacer size="10" />
-                    <Text color="fcPurple" decoration="underline" align="center" size="14"> @0x94t3z</Text>
+                    <Text color="yellow" decoration="underline" align="center" size="14"> @0x94t3z</Text>
                 </Box>
             </VStack>
         </Box>
@@ -148,7 +148,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
               <Box flexDirection="row" justifyContent="center">
                   <Text color="white" align="center" size="14">created by</Text>
                   <Spacer size="10" />
-                  <Text color="fcPurple" decoration="underline" align="center" size="14"> @0x94t3z</Text>
+                  <Text color="yellow" decoration="underline" align="center" size="14"> @0x94t3z</Text>
                 </Box>
           </VStack>
         </Box>
@@ -181,7 +181,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
                 <Box flexDirection="row" justifyContent="center">
                     <Text color="white" align="center" size="14">created by</Text>
                     <Spacer size="10" />
-                    <Text color="fcPurple" decoration="underline" align="center" size="14"> @0x94t3z</Text>
+                    <Text color="yellow" decoration="underline" align="center" size="14"> @0x94t3z</Text>
                 </Box>
             </VStack>
         </Box>
