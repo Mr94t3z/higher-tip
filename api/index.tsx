@@ -33,6 +33,8 @@ app.castAction(
       }`,
     )
     const message = JSON.stringify(c.actionData.castId);
+
+    console.log(`Sending message: ${message}`)
     return c.frame({ path: `/higher-tip-frame/${message}`})
   }, 
   { name: "Higher tipping", icon: "zap" }
