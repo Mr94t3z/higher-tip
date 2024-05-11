@@ -7,7 +7,8 @@ export const { Box, Image, Heading, Text, VStack, Spacer, vars } = createSystem(
     red: "red",
     fcPurple: "rgb(123,101,193)",
     bg: "rgb(0,138,7)",
-    grey: "rgb(136,191,130)"
+    grey: "rgb(136,191,130)",
+    yellow: "rgb(255, 255, 204)"
   },
   fonts: {
     default: [

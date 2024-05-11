@@ -35,7 +35,7 @@ app.frame('/', (c) => {
                 </Heading>
                 <Spacer size="16" />
                 <Text align="center" color="grey" size="16">
-                    Cast action to tip $higher.
+                    a cast action to tip $higher.
                 </Text>
                 <Spacer size="22" />
                 <Box flexDirection="row" justifyContent="center">
@@ -101,7 +101,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
                   <Box flexDirection="row" justifyContent="center">
                       <Text color="white" align="center" size="14">created by</Text>
                       <Spacer size="10" />
-                      <Text color="fcPurple" decoration="underline" align="center" size="14"> @0x94t3z</Text>
+                      <Text color="yellow" decoration="underline" align="center" size="14"> @0x94t3z</Text>
                   </Box>
               </VStack>
           </Box>
