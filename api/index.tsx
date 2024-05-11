@@ -1,6 +1,7 @@
 import { Button, Frog} from 'frog'
 import { handle } from 'frog/vercel'
 import { Box, Heading, Text, VStack, Spacer, vars } from "../lib/ui.js";
+import { abi } from "../lib/higherAbi.js";
 import dotenv from 'dotenv';
 
 // Load environment variables from .env file
@@ -118,7 +119,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
 
     const username = userData.username;
   
-    const eth_addresses = userData.verified_addresses.eth_addresses.toString().toLowerCase().split(',')[0];
+    const eth_address = userData.verified_addresses.eth_addresses.toString().toLowerCase().split(',')[0];
 
     return c.res({
       action: '/tx-status',
@@ -149,7 +150,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
         </Box>
       ),
       intents: [
-        <Button.Transaction target="/transfer">Tip @{username}</Button.Transaction>,
+        <Button.Transaction target={`/transfer/${eth_address}`}>Tip @{username}</Button.Transaction>,
       ],
     });
   } catch (error) {
@@ -184,6 +185,33 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
   });
 }
 })
+
+
+app.transaction('/transfer/:eth_address', async (c, next) => {
+  await next();
+  const txParams = await c.res.json();
+  txParams.attribution = false;
+  console.log(txParams);
+  c.res = new Response(JSON.stringify(txParams), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+},
+async (c) => { 
+    const {eth_address} = c.req.param();
+
+    const contractAddress = process.env.HIGHER_SMART_CONTRACT_ADDRESS;
+    // Send transaction response. 
+    return c.contract({ 
+      abi: abi,
+      chainId: 'eip155:8453',
+      functionName: 'transfer',
+      args: [eth_address as `0x${string}`, 1n],
+      to: contractAddress as `0x${string}`,
+    }) 
+  }
+) 
 
 export const GET = handle(app)
 export const POST = handle(app)
