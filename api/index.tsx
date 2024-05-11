@@ -91,11 +91,11 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
           >
               <VStack gap="4">
                   <Heading color="white" weight="900" align="center" size="32">
-                      Error
+                      Nice Try
                   </Heading>
                   <Spacer size="16" />
                   <Text align="center" color="grey" size="16">
-                      Nice try, you can't tip yourself.
+                      You can't tip yourself.
                   </Text>
                   <Spacer size="22" />
                   <Box flexDirection="row" justifyContent="center">
