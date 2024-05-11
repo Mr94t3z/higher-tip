@@ -31,7 +31,7 @@ app.frame('/', (c) => {
             height="100%"
         >
             <VStack gap="4">
-                <Heading color="white" decoration="underline" weight="900" align="center" size="32">
+                <Heading color="white" weight="900" align="center" size="32">
                     Higher Tipping 
                 </Heading>
                 <Spacer size="16" />
@@ -49,7 +49,7 @@ app.frame('/', (c) => {
     ),
     intents: [
       <Button.AddCastAction action="/higher-tip">
-        Add "Higher Tipping" Action
+        Add Action
       </Button.AddCastAction>,
     ]
   })
@@ -86,7 +86,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
               height="100%"
           >
               <VStack gap="4">
-                  <Heading color="white" decoration="underline" weight="900" align="center" size="32">
+                  <Heading color="white" weight="900" align="center" size="32">
                       Error
                   </Heading>
                   <Spacer size="16" />
@@ -133,7 +133,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
           height="100%"
         >
           <VStack gap="4">
-            <Heading color="white" decoration="underline" weight="900" align="center" size="32">
+            <Heading color="white" weight="900" align="center" size="32">
             ↑ Higher Tipping ↑
             </Heading>
             <Spacer size="16" />
@@ -166,7 +166,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
             height="100%"
         >
             <VStack gap="4">
-                <Heading color="white" decoration="underline" weight="900" align="center" size="32">
+                <Heading color="white" weight="900" align="center" size="32">
                     Error
                 </Heading>
                 <Spacer size="16" />
@@ -211,7 +211,9 @@ async (c) => {
       to: contractAddress as `0x${string}`,
     }) 
   }
-) 
+)
+
+
 
 export const GET = handle(app)
 export const POST = handle(app)
