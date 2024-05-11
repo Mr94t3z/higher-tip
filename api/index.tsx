@@ -32,7 +32,7 @@ app.castAction(
         c.actionData.fid
       }`,
     )
-    const message = c.actionData.castId
+    const message = JSON.stringify(c.actionData.castId);
     return c.frame({ path: `/higher-tip-frame/${message}`})
   }, 
   { name: "Higher tipping", icon: "zap" }
