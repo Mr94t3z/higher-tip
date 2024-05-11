@@ -32,9 +32,14 @@ app.castAction(
         c.actionData.fid
       }`,
     )
+    // Stringify the entire castId object
     const message = JSON.stringify(c.actionData.castId);
 
-    console.log(`Sending message: ${message}`)
+    // Parse the message back to an object to extract fid
+    const parsedMessage = JSON.parse(message);
+    const fid = parsedMessage.fid;
+
+    console.log(`Sending to: ${fid}`)
     return c.frame({ path: `/higher-tip-frame/${message}`})
   }, 
   { name: "Higher tipping", icon: "zap" }
