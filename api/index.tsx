@@ -116,16 +116,16 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
           height="100%"
         >
           <VStack gap="4">
-            <Heading color="fcPurple" decoration="underline" weight="900" align="center" size="32">
+            <Heading color="white" decoration="underline" weight="900" align="center" size="32">
               DP Rewards Checker
             </Heading>
             <Spacer size="16" />
-            <Text align="center" color="white" size="18">
-              Send 1 $higher to {username}
+            <Text align="center" color="grey" size="18">
+              Sending ↑ 1 $higher to @{username}?
             </Text>
             <Spacer size="22" />
               <Box flexDirection="row" justifyContent="center">
-                  <Text color="black" align="center" size="14">created by</Text>
+                  <Text color="white" align="center" size="14">created by</Text>
                   <Spacer size="10" />
                   <Text color="fcPurple" decoration="underline" align="center" size="14"> @0x94t3z</Text>
                 </Box>
@@ -133,7 +133,7 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
         </Box>
       ),
       intents: [
-        <Button action="/result">Tip</Button>,
+        <Button.Transaction target="/transfer">Tip @{username}</Button.Transaction>,
       ],
     });
   } catch (error) {
@@ -149,16 +149,16 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
             height="100%"
         >
             <VStack gap="4">
-                <Heading color="fcPurple" decoration="underline" weight="900" align="center" size="32">
+                <Heading color="white" decoration="underline" weight="900" align="center" size="32">
                     Error
                 </Heading>
                 <Spacer size="16" />
-                <Text align="center" color="red" size="16">
+                <Text align="center" color="grey" size="16">
                     Uh oh, something went wrong. Try again.
                 </Text>
                 <Spacer size="22" />
                 <Box flexDirection="row" justifyContent="center">
-                    <Text color="black" align="center" size="14">created by</Text>
+                    <Text color="white" align="center" size="14">created by</Text>
                     <Spacer size="10" />
                     <Text color="fcPurple" decoration="underline" align="center" size="14"> @0x94t3z</Text>
                 </Box>
