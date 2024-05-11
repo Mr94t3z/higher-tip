@@ -4,6 +4,10 @@ import { Box, Heading, Text, VStack, Spacer, vars } from "../lib/ui.js";
 import { abi } from "../lib/higherAbi.js";
 import dotenv from 'dotenv';
 
+// Uncomment this packages to tested on local server
+import { devtools } from 'frog/dev';
+import { serveStatic } from 'frog/serve-static';
+
 // Load environment variables from .env file
 dotenv.config();
 
@@ -32,11 +36,11 @@ app.frame('/', (c) => {
         >
             <VStack gap="4">
                 <Heading color="white" weight="900" align="center" size="32">
-                    Higher Tipping 
+                  ↑ Higher Tipping ↑
                 </Heading>
                 <Spacer size="16" />
                 <Text align="center" color="grey" size="16">
-                    a cast action to tip $higher.
+                  a cast action to tip, capped at 1 $higher.
                 </Text>
                 <Spacer size="22" />
                 <Box flexDirection="row" justifyContent="center">
@@ -68,7 +72,7 @@ app.castAction(
 
     return c.frame({ path: `/higher-tip-frame/${castFid}/from/${fromFid}`})
   }, 
-  { name: "Higher Tipping ↑", icon: "zap" }
+  { name: "↑ Higher Tipping ↑", icon: "zap" }
 )
 
 app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
@@ -104,6 +108,8 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
       ),
   });
   }
+
+  // const castFid = 1;
 
   try {
     const response = await fetch(`${baseUrlNeynarV2}/user/bulk?fids=${castFid}`, {
@@ -207,13 +213,14 @@ async (c) => {
       abi: abi,
       chainId: 'eip155:8453',
       functionName: 'transfer',
-      args: [eth_address as `0x${string}`, 1n],
+      args: [eth_address as `0x${string}`, 1000000000000000000n],
       to: contractAddress as `0x${string}`,
     }) 
   }
 )
 
-
+// Uncomment this line code to tested on local server
+devtools(app, { serveStatic });
 
 export const GET = handle(app)
 export const POST = handle(app)
