@@ -21,13 +21,34 @@ const baseUrlNeynarV2 = process.env.BASE_URL_NEYNAR_V2;
 app.frame('/', (c) => {
   return c.res({
     image: (
-      <div style={{ color: 'white', display: 'flex', fontSize: 60 }}>
-        Add "Higher Tipping" Action
-      </div>
+        <Box
+            grow
+            alignVertical="center"
+            backgroundColor="bg"
+            padding="48"
+            textAlign="center"
+            height="100%"
+        >
+            <VStack gap="4">
+                <Heading color="white" decoration="underline" weight="900" align="center" size="32">
+                    Higher Tipping 
+                </Heading>
+                <Spacer size="16" />
+                <Text align="center" color="grey" size="16">
+                    Cast action to tip $higher.
+                </Text>
+                <Spacer size="22" />
+                <Box flexDirection="row" justifyContent="center">
+                    <Text color="white" align="center" size="14">created by</Text>
+                    <Spacer size="10" />
+                    <Text color="fcPurple" decoration="underline" align="center" size="14"> @0x94t3z</Text>
+                </Box>
+            </VStack>
+        </Box>
     ),
     intents: [
       <Button.AddCastAction action="/higher-tip">
-        Add
+        Add "Higher Tipping" Action
       </Button.AddCastAction>,
     ]
   })
@@ -117,11 +138,11 @@ app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
         >
           <VStack gap="4">
             <Heading color="white" decoration="underline" weight="900" align="center" size="32">
-              DP Rewards Checker
+            ↑ Higher Tipping ↑
             </Heading>
             <Spacer size="16" />
             <Text align="center" color="grey" size="18">
-              Sending ↑ 1 $higher to @{username}?
+              Send 1 $higher to @{username}?
             </Text>
             <Spacer size="22" />
               <Box flexDirection="row" justifyContent="center">
