@@ -3,7 +3,6 @@ import { handle } from 'frog/vercel'
 import { Box, Heading, Text, VStack, Spacer, vars } from "../lib/ui.js";
 import { abi } from "../lib/higherAbi.js";
 import dotenv from 'dotenv';
-import octicons from '@primer/octicons';
 
 // Uncomment this packages to tested on local server
 // import { devtools } from 'frog/dev';
@@ -73,7 +72,7 @@ app.castAction(
 
     return c.frame({ path: `/higher-tip-frame/${castFid}/from/${fromFid}`})
   }, 
-  { name: "↑ Higher Tipping ↑", icon: octicons["arrow-up"] as any }
+  { name: "↑ Higher Tipping ↑", icon: "zap" }
 )
 
 app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
