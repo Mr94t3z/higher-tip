@@ -72,7 +72,7 @@ app.castAction(
 
     return c.frame({ path: `/higher-tip-frame/${castFid}/from/${fromFid}`})
   }, 
-  { name: "↑ Higher Tipping ↑", icon: "zap" }
+  { name: "↑ Higher Tipping ↑", icon: "arrow-up" as any }
 )
 
 app.frame('/higher-tip-frame/:castFid/from/:fromFid', async (c) => {
